@@ -1,0 +1,70 @@
+<%- include("partials/header.ejs") %>
+
+<div class="stats">
+<!-- Display book counts -->
+  <p>
+    Books reviewed:
+  </p>
+  <div class="postIt-notes">
+    <div class="randomRotation">
+      <span><%= bookCountYear %></span>
+      <p>
+          THIS YEAR
+      </p>
+    </div>
+    
+    <div class="randomRotation">
+      <span><%= bookCountTotal %></span>
+      <p>
+        TOTAL
+      </p>
+    </div>
+  </div>
+</div>
+
+<main>
+    <div class="postIt-tabs">
+    <!-- Add entry and Sort entries buttons -->
+      <div class="randomRotation">
+        <a href="/add-entry">New Entry <span class="material-icons-round">add</span></a>
+      </div>
+
+      <div class="randomRotation">
+        <button id="sortToggle">
+          <span class="material-icons-round">sort</span> Sort By
+        </button>
+
+        <form action="/sort" method="POST" id="sortForm">
+          <input type="hidden" name="sortBy" id="sortInput">
+        </form>        
+      </div>
+
+      <div class="sortOptions randomRotation">
+        <ul>
+          <li data-value="reviews.date_created DESC">Newest</li>
+          <li data-value="reviews.date_created ASC">Oldest</li>
+          <li data-value="books.title ASC">Title (A-Z)</li>
+          <li data-value="books.title DESC">Title (Z-A)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="homepage-entry-grid">
+      <% for (let entry of listOfEntries) { %>
+      <!-- Render each entry in the homepage grid -->
+        <%- include("partials/entry.ejs", { 
+          entryDetails: entry, 
+          // Conditionals:
+          showLineBreak: true,
+          showDatePublished: true,
+          showPreview: true, 
+          showButtons: true, 
+          showForm: false, 
+          showEditForm: false, 
+          showPostForm: false 
+        }) %> 
+      <% } %>
+    </div>
+</main>
+
+<%- include("partials/footer.ejs", { yearNow: year }) %>

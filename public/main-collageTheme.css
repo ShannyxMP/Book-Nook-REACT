@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #000000;
+  background-image: url("https://www.transparenttextures.com/patterns/black-paper.png");
+
+  font-family: "Space Grotesk", sans-serif;
+  color: #161616;
+
+  overflow-x: hidden; /* NOTE: required to be applied to both html and body to work correctly */
+
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  overflow-x: hidden; /* NOTE: required to be applied to both html and body to work correctly */
+}
+
+main {
+  margin: 0 8px;
+
+  background-color: #f1eaea;
+  background-image: url("https://www.transparenttextures.com/patterns/notebook-dark.png");
+  box-shadow: 3px 3px 2px black;
+}
+
+a {
+  text-decoration: none;
+  color: #161616;
+}
+
+a:hover {
+  color: #ff9500;
+}
+
+/******************** MOBILE FIRST ********************/
+/********** HEADER CONTENT **********/
+header {
+  padding: 20px 20px 0px;
+  margin-bottom: 60px;
+
+  color: #f1eaea;
+  border-bottom: 10px solid #f1eaea;
+}
+
+header a {
+  color: #f1eaea;
+}
+
+#title {
+  margin: 0;
+
+  font-family: "Permanent Marker", serif;
+  font-size: 3rem;
+
+  position: relative;
+}
+
+#title:after {
+  content: "";
+
+  background-image: url("assets/images/AS(2).png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  width: 650px;
+  height: 650px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(10px, 80px) rotate(0.008turn) scale(0.2);
+  transform-origin: top right;
+
+  z-index: 1;
+}
+
+#title span {
+  font-size: 3rem;
+}
+
+/******************** MOBILE FIRST ********************/
+/********** FOOTER CONTENT **********/
+.auto-scrollUp {
+  height: 40px;
+  width: 60px;
+
+  position: fixed;
+  right: -45px;
+  bottom: 30px;
+  z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #ffae55;
+  box-shadow: 3px 3px 5px black;
+
+  transition: ease-in 0.5s;
+}
+
+.auto-scrollUp.show {
+  right: -1px;
+}
+
+footer {
+  width: 100%;
+
+  margin-top: 120px;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: end;
+
+  color: #f1eaea;
+  border-top: 0.3rem solid #f1eaea;
+
+  transform: translate(0, 0);
+  transform-origin: bottom left;
+}
+
+footer:before {
+  content: "";
+
+  background-image: url("assets/images/AS(1).png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  width: 650px;
+  height: 650px;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate(0, -20px) rotate(-0.005turn) scale(0.2);
+  transform-origin: bottom left;
+}
+
+footer p {
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: small;
+  font-family: "Permanent Marker", serif;
+}
+
+footer a {
+  color: #f1eaea;
+}
+
+footer span {
+  font-size: 1.5rem;
+}
+
+/* MEDIUM DEVICES AND ABOVE */
+@media only screen and (min-width: 600px) {
+  #title span,
+  #title a {
+    font-size: 4rem;
+  }
+}

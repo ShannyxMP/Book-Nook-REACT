@@ -1,0 +1,203 @@
+/********** FORM LAYOUT **********/
+input,
+textarea {
+  padding: 5px 16px;
+
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 3px dashed rgba(255, 255, 255, 0.75);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  color: white;
+
+  text-align: justify;
+}
+
+textarea {
+  width: 100%;
+  min-height: min(250px);
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/********** EDIT-PAGE LAYOUT **********/
+/* 
+  // Conditionals:
+    showLineBreak: false,
+    showDatePublished: true, 
+    showPreview: false, 
+    showButtons: false, 
+    showForm: true, 
+    showEditForm: true,
+    showPostForm: false 
+*/
+
+.addEdit-entryPage h2,
+h3 {
+  font-family: "Rock Salt", "Space Grotesk", sans-serif;
+  color: white;
+
+  margin-left: 15px;
+}
+
+.addEdit-entryPage .polaroid {
+  z-index: 1;
+}
+
+.addEdit-entryPage .entire-entry-container {
+  margin-top: 80px;
+}
+
+.addEdit-entryPage .entry-content-container {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px auto;
+  grid-auto-rows: auto;
+
+  margin-top: 20px;
+  padding: 0 8px;
+
+  color: white;
+}
+
+.addEdit-entryPage .entry-rating {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+
+  display: flex;
+  justify-content: start;
+  align-items: end;
+
+  font-size: 1.8rem;
+  font-family: "Rock Salt", "Space Grotesk", sans-serif;
+}
+
+.addEdit-entryPage .entry-rating p {
+  margin: 0;
+}
+
+.addEdit-entryPage .entry-review {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+
+  margin-top: 20px;
+  padding: 30px 15px;
+
+  background-color: #f1eaea;
+  background-image: url("https://www.transparenttextures.com/patterns/notebook-dark.png");
+  border-top: 17px dotted rgb(18 18 18);
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px black;
+
+  white-space: pre-line;
+
+  color: #161616;
+}
+
+.addEdit-entryPage form {
+  grid-column: 1 / -1;
+  grid-row: 3 / -1;
+}
+
+.addEdit-entryPage form .cancelSubmit-btn {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  margin-top: 15px;
+
+  gap: 25px;
+}
+
+.addEdit-entryPage form .cancelSubmit-btn input:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.addEdit-entryPage .entry-content-container a {
+  color: white;
+}
+
+.addEdit-entryPage .empty {
+  font-size: 0.62rem;
+  color: #7c7c7c;
+  font-weight: 800;
+}
+
+/* MEDIUM DEVICES AND ABOVE */
+@media only screen and (min-width: 600px) {
+  .addEdit-entryPage .entire-entry-container {
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .addEdit-entryPage .entry-content-container {
+    padding: 0 40px;
+  }
+}
+
+/********** ADD-PAGE LAYOUT **********/
+/*
+  // Conditionals:
+    showLineBreak: false,
+    showDatePublished: true, 
+    showPreview: false,
+    showButtons: false, 
+    showForm: true,
+    showEditForm: false, 
+    showPostForm: true  
+*/
+/* NOTE: add-page layout and designed was adjoined to edit-page CSS above */
+
+.isbn-form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: end;
+
+  margin-right: 8px;
+}
+
+.isbn-form div {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  margin-top: 15px;
+
+  gap: 25px;
+}
+
+.isbn-form a {
+  color: white;
+}
+
+.isbn-form div input:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.gif-container {
+  width: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.gif-container img {
+  height: 300px;
+}
+
+/* MEDIUM DEVICES AND ABOVE */
+@media only screen and (min-width: 600px) {
+  .isbn-form {
+    margin-right: 40px;
+  }
+}

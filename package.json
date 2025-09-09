@@ -1,0 +1,43 @@
+{
+  "name": "udemy-capstone-4-booknook",
+  "version": "1.0.0",
+  "description": "A webpage that keeps track of books read with review and rating.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShannyxMP/Book-Nook.git"
+  },
+  "keywords": [
+    "axios",
+    "body-parser",
+    "dotenv",
+    "ejs",
+    "express",
+    "node.js",
+    "pg",
+    "API",
+    "book",
+    "web",
+    "app",
+    "postgreSQL"
+  ],
+  "author": "ShannyxMP",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ShannyxMP/Book-Nook/issues"
+  },
+  "homepage": "https://github.com/ShannyxMP/Book-Nook#readme",
+  "dependencies": {
+    "axios": "^1.10.0",
+    "body-parser": "^2.2.0",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "node": "^24.2.0",
+    "pg": "^8.16.0"
+  }
+}

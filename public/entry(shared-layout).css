@@ -1,0 +1,108 @@
+/********** POLAROID LAYOUT **********/
+.polaroid {
+  width: clamp(280px, 30vw, 315px);
+  height: 450px;
+  border-radius: 5px;
+
+  display: grid;
+  grid-template-rows: 24px 1fr 90px;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+
+  overflow-x: clip;
+
+  font-family: "Rock Salt", "Space Grotesk", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+
+  /* background-color: rgb(255, 255, 255); */
+  background: linear-gradient(white, rgb(247, 247, 247));
+  box-shadow: 3px 3px 5px black;
+
+  transform: rotate(var(--rotation, 0.002turn));
+}
+
+.entry-img-wrapper {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow-x: hidden;
+
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.polaroid img {
+  height: 330px;
+}
+
+.entry-date {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+  justify-self: end;
+
+  padding-right: 5px;
+}
+
+.entry-date span {
+  letter-spacing: 3px;
+}
+
+.entry-titleAuthor {
+  grid-column: 1 / -1;
+  grid-row: 3 / -1;
+
+  width: 100%;
+
+  text-align: center;
+  font-size: clamp(0.62rem, 0.8rem, 1rem);
+
+  background-color: rgba(0, 0, 0, 0.001);
+}
+
+.entry-titleAuthor span {
+  font-size: clamp(0.8rem, 1rem, 1.62rem);
+  font-weight: 700;
+}
+
+/********** ENTIRE ENTRY LAYOUT **********/
+/* SMALL DEVICES LAYOUT */
+.entire-entry-container {
+  width: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.entry-review {
+  text-align: justify;
+}
+
+.entry-review p {
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* MEDIUM DEVICES AND ABOVE */
+@media only screen and (min-width: 600px) {
+  .entire-entry-container {
+    height: auto;
+
+    display: grid;
+    grid-template-columns: 0.8fr 2fr;
+    grid-template-rows: 120px 2fr;
+    gap: 2rem;
+  }
+
+  .polaroid {
+    transform: rotate(var(--rotation, 0.002turn)) translateX(20px);
+  }
+}

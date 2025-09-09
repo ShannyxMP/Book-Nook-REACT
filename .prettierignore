@@ -1,0 +1,8 @@
+# To prevent illegible reformatting:
+views/index.ejs
+views/add-entry.ejs
+views/view-entry.ejs
+views/edit-entry.ejs
+
+# To prevent closing tags
+views/partials/header.ejs

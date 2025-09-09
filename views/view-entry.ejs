@@ -1,0 +1,21 @@
+<%- include("partials/header.ejs") %> 
+
+<main>
+    <div class="view-entryPage">
+        <% if (entryToView) { %>
+            <%- include("partials/entry.ejs", { 
+                entryDetails: entryToView, 
+                // Conditionals:
+                showLineBreak: false,
+                showDatePublished: true, 
+                showPreview: false,     
+                showButtons: true, 
+                showForm: false, 
+                showEditForm: false,
+                showPostForm: false 
+            }) %> 
+        <% } %> 
+    </div>
+</main>
+
+<%- include("partials/footer.ejs", { yearNow: year }) %>
