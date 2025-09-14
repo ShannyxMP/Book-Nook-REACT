@@ -63,7 +63,7 @@ header a {
 #title:after {
   content: "";
 
-  background-image: url("assets/images/AS(2).png");
+  background-image: url("./assets/images/AS(2).png");
   background-size: contain;
   background-repeat: no-repeat;
 
@@ -128,7 +128,7 @@ footer {
 footer:before {
   content: "";
 
-  background-image: url("assets/images/AS(1).png");
+  background-image: url("./assets/images/AS(1).png");
   background-size: contain;
   background-repeat: no-repeat;
 

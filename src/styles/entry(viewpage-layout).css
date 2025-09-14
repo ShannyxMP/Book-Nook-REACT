@@ -167,7 +167,7 @@
 .postIt-tabs div:nth-child(1):after {
   content: "current entries below.. ";
 
-  background-image: url("assets/images/book.png");
+  background-image: url("./assets/images/book.png");
   background-size: contain;
   background-repeat: no-repeat;
 
@@ -480,7 +480,7 @@ hr {
 .view-entryPage:after {
   content: "";
 
-  background-image: url("assets/images/paperclip.png");
+  background-image: url("./assets/images/paperclip.png");
   background-size: contain;
   background-repeat: no-repeat;
 
