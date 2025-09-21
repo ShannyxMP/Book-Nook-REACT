@@ -22,7 +22,7 @@ const db = new pg.Client({
 db.connect();
 
 // Middlewares
-app.use(express.static("public")); // For static assets (CSS, JS, images)
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded forms
 
 // Sample of book and review objects
@@ -90,28 +90,32 @@ app.get("/", async (req, res) => {
 
     booksReadTotal = entries.length;
     booksReadThisYear = result.rows.length;
+
+    res.json({
+      listOfEntries: entries,
+      bookCountTotal: booksReadTotal,
+      bookCountYear: booksReadThisYear,
+      year: currentYear,
+    });
   } catch (error) {
     console.error("Error: ", error.message);
   }
-
-  res.render("index.ejs", {
-    listOfEntries: entries,
-    bookCountTotal: booksReadTotal,
-    bookCountYear: booksReadThisYear,
-    year: currentYear,
-  });
 });
 
 // Update sorting preference when user clicks sort button and list
 app.post("/sort", (req, res) => {
   // console.log(req.body);
   sorting = req.body.sortBy;
-  res.redirect("/");
+  // res.redirect("/");
+  res.json({ success: true });
 });
 
 // View add-entry page with ISBN form and empty preview pane
 app.get("/add-entry", async (req, res) => {
-  res.render("add-entry.ejs", { entryToAdd: null, year: currentYear });
+  res.json({
+    entryToAdd: null,
+    year: currentYear,
+  });
 });
 
 // Re-render add-entry page once data fetched from API and show in preview
@@ -135,7 +139,7 @@ app.post("/fetch-new-entry", async (req, res) => {
       };
       // console.log(bookDetails);
 
-      res.render("add-entry.ejs", {
+      res.json({
         entryToAdd: bookDetails,
         year: currentYear,
       });
@@ -143,11 +147,12 @@ app.post("/fetch-new-entry", async (req, res) => {
       console.error("Error details: ", error.message);
     }
   } else {
-    res
-      .status(400)
-      .send(
-        "Invalid ISBN. Must be 10 or 13 digits. Hyphenated format is allowed."
-      );
+    // res
+    //   .status(400)
+    //   .send(
+    //     "Invalid ISBN. Must be 10 or 13 digits. Hyphenated format is allowed."
+    //   );
+    res.status(400).json({ success: false, error: error.message });
   }
 });
 
@@ -175,10 +180,12 @@ app.post("/post-new-entry", async (req, res) => {
     );
     // console.log(bookResult, reviewResult);
 
-    res.redirect("/");
+    // res.redirect("/");
+    res.json({ success: true });
   } catch (error) {
     console.error("Error details: ", error.message);
-    res.status(500).send("Failed to add book and review to database.");
+    // res.status(500).send("Failed to add book and review to database.");
+    res.status(500).json({ success: false, error: error.message });
   }
 });
 
@@ -191,7 +198,10 @@ app.get("/view/:postId", async (req, res) => {
   const fetchEntry = entries.find((entry) => entry.review_id == entryIndex);
   console.log("Fetched entry: ", fetchEntry);
 
-  res.render("view-entry.ejs", { entryToView: fetchEntry, year: currentYear });
+  res.json({
+    entryToView: fetchEntry,
+    year: currentYear,
+  });
 });
 
 // View editing page for a specific book review
@@ -203,7 +213,10 @@ app.get("/edit/:postId", async (req, res) => {
   const fetchEntry = entries.find((entry) => entry.review_id == entryIndex);
   // console.log("Fetched entry: ", fetchEntry);
 
-  res.render("edit-entry.ejs", { entryToEdit: fetchEntry, year: currentYear });
+  res.json({
+    entryToEdit: fetchEntry,
+    year: currentYear,
+  });
 });
 
 // After submitting new entry, redirect to homepage
@@ -229,7 +242,8 @@ app.post("/edit-entry/:postId", async (req, res) => {
       isbn,
     ]);
 
-    res.redirect("/");
+    // res.redirect("/");
+    res.json({ success: true });
   } catch (error) {
     console.error("Error details: ", error.message);
     res.send("Could not update entry.");
@@ -248,7 +262,8 @@ app.get("/delete/:postId", async (req, res) => {
     );
 
     console.log("Deleted the following entry: ", result);
-    res.redirect("/");
+    // res.redirect("/");
+    res.json({ success: true });
   } catch (error) {
     console.error("Error details: ", error.message);
     res.send("Could not delete entry.");
