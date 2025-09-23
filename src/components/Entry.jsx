@@ -17,17 +17,17 @@ function Entry({
   const preview = entryDetails.review.substring(0, 300);
 
   return (
-    <div class="entire-entry-container">
+    <div className="entire-entry-container">
       {/* Divider between entries */}
       {showLineBreak && (
-        <div class="lineBreak-wrapper">
+        <div className="lineBreak-wrapper">
           <hr />
         </div>
       )}
 
       {/* Polaroid image showing book details */}
-      <div class="polaroid randomRotation">
-        <div class="entry-img-wrapper">
+      <div className="polaroid randomRotation">
+        <div className="entry-img-wrapper">
           <img
             src={entryDetails.book_cover}
             alt={`book cover for ${entryDetails.title}`}
@@ -35,20 +35,20 @@ function Entry({
         </div>
 
         {showDatePublished && (
-          <div class="entry-date">
+          <div className="entry-date">
             <p>
               Date Created:
               {/* If no date fetched from database, fallback to placeholder */}
               {entryDetails.date_created ? (
                 <span>{formattedDate}</span>
               ) : (
-                <span class="empty">--/--/----</span>
+                <span className="empty">--/--/----</span>
               )}
             </p>
           </div>
         )}
 
-        <div class="entry-titleAuthor">
+        <div className="entry-titleAuthor">
           <p>
             <span>
               <a
@@ -65,7 +65,7 @@ function Entry({
             {entryDetails.author ? (
               entryDetails.author
             ) : (
-              <span class="empty">
+              <span className="empty">
                 <em>No Author yet. Please update.</em>
               </span>
             )}
@@ -74,8 +74,8 @@ function Entry({
       </div>
 
       {/* Section containing rating, review +/- forms and buttons, depending on flags */}
-      <div class="entry-content-container">
-        <div class="entry-rating">
+      <div className="entry-content-container">
+        <div className="entry-rating">
           <p>
             {/* If no rating fetched from database, fallback to placeholder */}
             {entryDetails.rating ? (
@@ -93,12 +93,12 @@ function Entry({
               )
             ) : (
               <div>
-                <span class="empty">No rating yet. Fill form below.</span>
+                <span className="empty">No rating yet. Fill form below.</span>
               </div>
             )}
           </p>
         </div>
-        <div class="entry-review">
+        <div className="entry-review">
           <p>
             {/* If no review fetched from database, fallback to placeholder */}
             {entryDetails.review ? (
@@ -113,34 +113,34 @@ function Entry({
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span class="material-icons-round">read_more</span>
+                    <span className="material-icons-round">read_more</span>
                   </a>
                 </>
               ) : (
                 entryDetails.review
               )
             ) : (
-              <span class="empty">No review yet. Fill form below.</span>
+              <span className="empty">No review yet. Fill form below.</span>
             )}
           </p>
         </div>
         {/* Home, Edit, and Delete button */}
         {showButtons && (
-          <div class="entry-buttons">
+          <div className="entry-buttons">
             {!showPreview && (
               <a href="/">
-                <span class="material-icons-round">home</span>
+                <span className="material-icons-round">home</span>
               </a>
             )}
             <a href={`/edit/${entryDetails.review_id}`}>
-              <span class="material-icons-round">edit</span>
+              <span className="material-icons-round">edit</span>
             </a>
             <form method="POST">
               <a
                 href={`/delete/${entryDetails.review_id}`}
                 onclick="return confirm('Are you sure you want to delete this entry?')"
               >
-                <span class="material-icons-round">delete</span>
+                <span className="material-icons-round">delete</span>
               </a>
             </form>
           </div>

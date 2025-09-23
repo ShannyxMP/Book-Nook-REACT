@@ -3,7 +3,7 @@ import React from "react";
 function FormSegment() {
   return (
     <>
-      <div class="entry-input-author">
+      <div className="entry-input-author">
         <h3>Author:</h3>
         <input
           type="text"
@@ -14,7 +14,7 @@ function FormSegment() {
         />
       </div>
 
-      <div class="entry-input-rating">
+      <div className="entry-input-rating">
         <h3>Rating:</h3>
         {[...Array(6)].map((_, i) => (
           <React.Fragment key={i}>
@@ -31,20 +31,20 @@ function FormSegment() {
         ))}
       </div>
 
-      <div class="entry-input-review">
+      <div className="entry-input-review">
         <h3>Review:</h3>
         <textarea
           name="review"
           placeholder="Write your review here..."
-          minlength="300"
+          minLength="300"
           required
-          autofocus
+          autoFocus
         >
           {entryDetails.review}
         </textarea>
       </div>
 
-      <div class="cancelSubmit-btn">
+      <div className="cancelSubmit-btn">
         {/* Cancelling submission on add-entry page will refresh page, otherwise will take user to homepage */}
         {showPostForm ? (
           <a href="/add-entry">Cancel</a>
