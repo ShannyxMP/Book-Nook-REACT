@@ -1,18 +1,41 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Entry from "../components/Entry";
 
 function App() {
+  const [data, setData] = useState({
+    listOfEntries: [],
+    bookCountTotal: 0,
+    bookCountYear: 0,
+    // year: null,
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/");
+        setData(response.data); // NOTE: Axios parses JSON automatically
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const { listOfEntries, bookCountTotal, bookCountYear } = data;
+
   return (
-    <div>
-      <div class="stats">
+    <>
+      <div className="stats">
         {/* Display book counts */}
         <p>Books reviewed:</p>
-        <div class="postIt-notes">
-          <div class="randomRotation">
+        <div className="postIt-notes">
+          <div className="randomRotation">
             <span>{bookCountYear}</span>
             <p>THIS YEAR</p>
           </div>
 
-          <div class="randomRotation">
+          <div className="randomRotation">
             <span>{bookCountTotal}</span>
             <p>TOTAL</p>
           </div>
@@ -20,17 +43,17 @@ function App() {
       </div>
 
       <main>
-        <div class="postIt-tabs">
+        <div className="postIt-tabs">
           {/* Add entry and Sort entries buttons */}
-          <div class="randomRotation">
+          <div className="randomRotation">
             <a href="/add-entry">
-              New Entry <span class="material-icons-round">add</span>
+              New Entry <span className="material-icons-round">add</span>
             </a>
           </div>
 
-          <div class="randomRotation">
+          <div className="randomRotation">
             <button id="sortToggle">
-              <span class="material-icons-round">sort</span> Sort By
+              <span className="material-icons-round">sort</span> Sort By
             </button>
 
             <form action="/sort" method="POST" id="sortForm">
@@ -38,7 +61,7 @@ function App() {
             </form>
           </div>
 
-          <div class="sortOptions randomRotation">
+          <div className="sortOptions randomRotation">
             <ul>
               <li data-value="reviews.date_created DESC">Newest</li>
               <li data-value="reviews.date_created ASC">Oldest</li>
@@ -48,10 +71,11 @@ function App() {
           </div>
         </div>
 
-        <div class="homepage-entry-grid">
+        <div className="homepage-entry-grid">
           {/* Render each entry in the homepage grid  */}
           {listOfEntries.map((entry) => (
             <Entry
+              key={entry.review_id}
               entryDetails={entry}
               // Conditionals:
               showLineBreak={true}
@@ -65,7 +89,7 @@ function App() {
           ))}
         </div>
       </main>
-    </div>
+    </>
   );
 }
 
