@@ -57,7 +57,7 @@
   /* background-color: #ff55f9; */
   background: linear-gradient(#ff55f9, #cb3ac6, #ff55f9);
 
-  transform: rotate(var(--rotation, 0.01turn));
+  /* transform: rotate(var(--rotation, 0.01turn)); */
 }
 
 .postIt-notes div:nth-child(1):before {
@@ -82,7 +82,7 @@
   /* background-color: #55e5ff; */
   background: linear-gradient(#55e5ff, #40bbd1, #2893a5);
 
-  transform: rotate(var(--rotation, -0.005turn));
+  /* transform: rotate(var(--rotation, -0.005turn)); */
 }
 
 .postIt-notes div:nth-child(2):before {
@@ -140,7 +140,8 @@
   justify-self: start;
   position: relative;
 
-  transform: translate(-8px, 0) rotate(var(--rotation, -0.003turn));
+  transform: translate(-8px, 0);
+  /* rotate(var(--rotation, -0.003turn) */
 
   text-align: right;
 
@@ -188,7 +189,8 @@
   justify-self: end;
   position: relative;
 
-  transform: translate(8px, -3px) rotate(var(--rotation, 0.004turn));
+  transform: translate(8px, -3px);
+  /* rotate(var(--rotation, 0.004turn) */
 
   text-align: left;
 
@@ -230,8 +232,8 @@
 
   background: linear-gradient(#bb55ff, #953cd0, #bb55ff);
 
-  transform: translate(var(--xPosition, 150px), 0)
-    rotate(var(--rotation, 0.002turn));
+  transform: translate(var(--xPosition, 150px), 0);
+  /* rotate(var(--rotation, 0.002turn)) */
 
   transition: transform 0.5s ease-in-out 0.1s;
 }
